@@ -23,25 +23,24 @@ def main():
 
     with st.sidebar:
         st.write("---")
-        total_vol_syringe = st.slider("Total vol syringe (mL)", 0.0, 1.0, 0.1, 0.1)
-        total_tick_marks = st.slider("Total tick marks", 1, 100, 1, 1)
+        total_vol_syringe = st.slider("Total vol syringe (mL)", 0.0, 1.0, 0.3, 0.1)
+        total_tick_marks = st.slider("Total tick marks", 1, 100, 30, 1)
         nr_tick_marks_pr_units = st.slider("Nr tick marks pr units", 1, 100, 1, 1)
 
     def calculate_tick_marks(total_vol_syringe, total_tick_marks, nr_tick_marks_pr_units, mass_hgh):
         draw_to_tick_marks = total_tick_marks / (total_vol_syringe/nr_tick_marks_pr_units) * mass_hgh
-        return round(draw_to_tick_marks, 1)
+        return draw_to_tick_marks
 
     mass_hgh = calculate_hgh(units_in_vial, units_needed_per_injection, ba_water_added_to_vial)
-    rounded_mass_hgh = round(mass_hgh, 4) * 1000
+    rounded_mass_hgh = round(((mass_hgh) * 1000),2)
 
     if st.button("Calculate"):
         st.write("Units needed per injection:", units_needed_per_injection)
-        st.write("mass of hgh mg:", rounded_mass_hgh)
         st.write("---")
-        st.write("Volume of syringe mL:", total_vol_syringe)
-        st.write("💉 Draw upto tick mark:", calculate_tick_marks(total_vol_syringe, total_tick_marks, nr_tick_marks_pr_units, mass_hgh))
-        st.write("And you will get swollen!!")
-        st.image("https://media.giphy.com/media/gF8FozygvbQJDTm2Ef/giphy.gif")
+        st.write("💉 Draw upto tick mark:", round(calculate_tick_marks(total_vol_syringe, total_tick_marks, nr_tick_marks_pr_units, mass_hgh),2))
+        st.write("mass of hgh mcg:", rounded_mass_hgh)
+        st.write("Get UltraSwole!!")
+        st.image("https://media.giphy.com/media/f8VSLphYUBCCxn09tD/giphy.gif", width=300)
 
 
 
