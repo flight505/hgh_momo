@@ -41,7 +41,7 @@ def main():
         st.write("Volume of syringe mL:", total_vol_syringe)
         st.write("💉 Draw upto tick mark:", calculate_tick_marks(total_vol_syringe, total_tick_marks, nr_tick_marks_pr_units, mass_hgh))
         st.write("And you will get swollen!!")
-        st.image("https://media.giphy.com/media/8BuX0qwZidk8a2xQNx/giphy-downsized-large.gif")
+        st.image("https://media.giphy.com/media/gF8FozygvbQJDTm2Ef/giphy.gif")
 
 
 
